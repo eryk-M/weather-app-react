@@ -1,6 +1,6 @@
 ## Weather app
 
-This is my weather app rewrited to React.
+This is my weather app rewritten into React.
 
 Still learning... !important
 
