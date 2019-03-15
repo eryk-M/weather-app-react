@@ -43,7 +43,10 @@ const ResultView = props => {
             </div>
             <div className="result__details">
               <span className="result__temperature">
-                <i className="fas fa-thermometer-half" />
+                <i className="fas fa-thermometer-half"
+                style={{
+                  color: "goldenrod"
+                }} />
                 Temperature: {today.main.temp.toFixed()} &#176;C
               </span>
               <span className="result__min-temp">
