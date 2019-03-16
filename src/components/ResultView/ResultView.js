@@ -1,5 +1,9 @@
 import React from "react";
 import "./ResultView.scss";
+// import "./CityName/CityName";
+import CityName from "./CityName/CityName";
+
+import Today from "./Days/Today/Today";
 
 const ResultView = props => {
   const {
@@ -20,61 +24,8 @@ const ResultView = props => {
     weather = (
       <div className="container">
         <div className="result__box">
-          <h1 className="result__name">
-            {`${name}, ${country}`}
-            <img
-              className="flag"
-              src={`https://www.countryflags.io/${country}/shiny/64.png`}
-              alt="Flaga"
-            />
-          </h1>
-          <div className="result__info">
-            <div className="result__day-wrapper">
-              <h2 className="result__day">Today</h2>
-              <img
-                src={`https://openweathermap.org/img/w/${
-                  today.weather[0].icon
-                }.png`}
-                alt="Weather condition"
-              />
-              <span className="result__description">
-                {today.weather[0].description}
-              </span>
-            </div>
-            <div className="result__details">
-              <span className="result__temperature">
-                <i className="fas fa-thermometer-half"
-                style={{
-                  color: "goldenrod"
-                }} />
-                Temperature: {today.main.temp.toFixed()} &#176;C
-              </span>
-              <span className="result__min-temp">
-                <i className="fas fa-thermometer-empty" />
-                Min temp: {today.main.temp_min.toFixed()} &#176;C
-              </span>
-              <span className="result__max-temp">
-                <i className="fas fa-thermometer-full" />
-                Max temp: {today.main.temp_max.toFixed()} &#176;C
-              </span>
-              <span className="result__wind-speed">
-                <i className="fas fa-wind" />
-                Wind speed: {(today.wind.speed * 3.6).toFixed()} km/h
-              </span>
-              <span className="result__humidity">
-                <i className="fas fa-tint" />
-                Humidity: {today.main.humidity}%
-              </span>
-              <span className="result__pressure">
-                <i className="fas fa-compress" />
-                Pressure: {today.main.pressure} hPa
-              </span>
-              <span className="result__cloudiness">
-                <i className="fas fa-cloud" />
-                Cloudiness: {today.clouds.all}%
-              </span>
-            </div>
-          </div>{" "}
+          <CityName name={name} country={country} />
+          <Today weather={today} />
           <div className="result__info">
             <div className="result__day-wrapper">
               <h2 className="result__day">Tomorrow</h2>
