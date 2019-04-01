@@ -1,0 +1,15 @@
+.search {
+  overflow-y: scroll;
+  position: relative;
+  height: 65.8rem;
+  background: url("../../assets/images/bg2.png");
+  background-position: center;
+  background-size: cover;
+
+  &__form {
+    position: absolute;
+    left: 50%;
+    top: 10%;
+    transform: translate(-50%, -50%);
+  }
+}
