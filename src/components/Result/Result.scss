@@ -1,6 +1,122 @@
 .result {
-  position: absolute;
-  top: 20%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  margin-top: 9rem;
+  width: 100%;
+  color: #ccc;
+  & i {
+    font-family: "weathericons";
+    font-style: normal;
+  }
+  &__day1 {
+    font-weight: 100;
+    & h1 {
+      text-align: center;
+      color: #ccc;
+      font-weight: 100;
+      font-size: 4rem;
+    }
+    &-top {
+      display: flex;
+      color: #ccc;
+      width: 60%;
+      margin: 0 auto;
+      justify-content: space-between;
+      align-items: center;
+      & i {
+        color: #ccc;
+        font-size: 7rem;
+        opacity: 0.7;
+      }
+    }
+
+    &-max {
+      font-size: 6rem;
+    }
+    &-min {
+      text-align: center;
+      font-size: 3rem;
+      color: #ccc;
+      padding-left: 10rem;
+      line-height: 2.5rem;
+    }
+    &-desc {
+      font-size: 2rem;
+      text-align: center;
+      color: #ccc;
+    }
+  }
+  &__main {
+    font-weight: 100;
+    width: 100%;
+    // margin: 0 auto;
+    // margin-top: 4rem;
+    min-height: 17.5;
+    background-color: rgba(0, 0, 0, 0.5);
+
+    margin-top: 3rem;
+    &-weather {
+      float: left;
+      margin-left: -0.5rem;
+      padding-right: 0.5rem;
+    }
+
+    &-item {
+      display: flex;
+      font-size: 1.6rem;
+      padding: 2rem;
+      justify-content: space-between;
+      // align-content: center;
+      // align-items: center;
+      animation: slideLeft 1s linear;
+      &-right {
+        display: flex;
+        align-items: center;
+        & i {
+          margin-right: 1rem;
+        }
+        & .fa-chevron-down {
+          color: black;
+          font-size: 2rem;
+          margin-left: 2rem;
+          padding-top: 0.4rem;
+          font-family: "Font Awesome 5 Free";
+          transition: 0.5s all;
+          z-index: 1;
+          position: relative;
+          &::after {
+            position: absolute;
+            content: "";
+            height: 2.6rem;
+            border-radius: 25px;
+            width: 2.6rem;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #ccc;
+            z-index: -1;
+          }
+        }
+      }
+      border-bottom: 0.5px solid #ccc;
+      &-info {
+        background-color: #ccc;
+        color: black;
+        display: none;
+        font-size: 1.6rem;
+        padding: 0.5rem 0;
+        & i {
+          vertical-align: middle;
+          margin: 0 1rem;
+          font-family: "Font Awesome 5 Free";
+          color: rgba(0, 0, 0, 0.5);
+        }
+      }
+    }
+  }
+  &__today {
+    display: block;
+  }
+}
+
+.rotate {
+  transform: rotate(180deg);
 }

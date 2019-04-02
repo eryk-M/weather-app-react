@@ -1,47 +1,29 @@
 import React, { Component } from "react";
 import "./Search.scss";
 import Result from "../../components/Result/Result";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+import { getForecast } from "../../actions/fetchForecast.actions";
+import Loader from "../../components/Loader/Loader";
 
-const API = "b10af6aec43fd80647fc64535ed23b01";
 class Search extends Component {
   state = {
     value: "",
     cityName: "",
     country: "",
     weather: [],
-    isLoading: false
+    isLoading: false,
+    latitude: 0,
+    longitude: 0
   };
   handleSubmit = e => {
     e.preventDefault();
-
-    const getAPI = `https://api.openweathermap.org/data/2.5/forecast?q=${
-      this.state.value
-    }&units=metric&appid=${API}`;
+    this.props.getForecast(this.props.api, this.state.value);
     this.setState({
-      isLoading: true
+      value: ""
     });
-    fetch(getAPI)
-      .then(response => {
-        if (response.ok) {
-          return response;
-        }
-        throw Error("Nie udało się");
-      })
-      .then(response => response.json())
-      .then(data => {
-        this.setState({
-          cityName: data.city.name,
-          country: data.city.country,
-          value: "",
-          isLoading: false
-        });
-        console.log(data);
-        // console.log(this.state.cityName);
-      })
-      .catch(err => {
-        console.log(err);
-      });
   };
+  componentDidMount() {}
 
   handleInputChange = e => {
     this.setState({
@@ -49,7 +31,13 @@ class Search extends Component {
     });
   };
   render() {
-    console.log(this.state.cityName);
+    // const date = new Date().toISOString();
+    // const dateFixed = date.substr(0, 10);
+    // const filteredDates = this.props.forecast.list.filter(
+    //   filter => filter.dt_txt.substr(0, 10) === dateFixed
+    // );
+    // console.log(filteredDates);
+    console.log(this.props);
     return (
       <div className="search">
         <form onSubmit={this.handleSubmit} className="home__form search__form">
@@ -61,10 +49,28 @@ class Search extends Component {
           />
           <i className="fas fa-search" />
         </form>
-        <Result weather={this.state} />
+        {this.props.forecast.isLoading ? (
+          <Loader />
+        ) : this.props.forecast.search ? (
+          <Result weather={this.props} />
+        ) : null}
       </div>
     );
   }
 }
+function mapStateToProps(state) {
+  return {
+    api: state.api.api,
+    forecast: state.forecast
+  };
+}
 
-export default Search;
+function mapDispatchToProps(dispatch) {
+  return {
+    getForecast: bindActionCreators(getForecast, dispatch)
+  };
+}
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Search);

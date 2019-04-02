@@ -25,4 +25,9 @@
       }
     }
   }
+
+  & .fa-bell {
+    animation: ring 4s 0.7s ease-in-out infinite;
+    transform-origin: 50% 4px;
+  }
 }

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./Menu.scss";
+import $ from "jquery";
 
 class Menu extends Component {
   state = {};
@@ -7,6 +8,8 @@ class Menu extends Component {
     // console.log(this.props);
     // this.history.goBack();
   };
+
+  handleNotify = () => {};
   render() {
     return (
       <div className="menu">
@@ -16,7 +19,7 @@ class Menu extends Component {
         <button onClick={this.props.search}>
           <i className="fas fa-search" />
         </button>
-        <button>
+        <button onClick={this.handleNotify}>
           <i className="fas fa-bell" />
         </button>
         <button onClick={this.handleBack}>

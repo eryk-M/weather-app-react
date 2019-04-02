@@ -1,33 +1,20 @@
 import React, { Component } from "react";
 import Loader from "../../components/Loader/Loader";
 import "./Home.scss";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+import { getWeather } from "../../actions/fetchWeather.actions";
+import { getApi } from "../../actions/api.actions";
 import bg from "../../assets/images/bg.png";
 import icon from "../../assets/images/icon.png";
 import { geolocated } from "react-geolocated";
-const API = "0b62cd0fa6e7ff2dc7f77011677bf785";
 
 class Home extends Component {
   state = {
     connect: false,
-    weather: [],
-    temp: 0,
-    icon: null,
-    description: "",
     latitude: 0,
-    longitude: 0,
-    value: "",
-    isLoading: false
+    longitude: 0
   };
-  componentDidMount() {
-    // this.setState({
-    //   isLoading: true
-    // });
-  }
-  componentWillMount() {
-    this.setState({
-      isLoading: true
-    });
-  }
 
   componentDidUpdate() {
     if (this.state.latitude !== this.props.coords.latitude) {
@@ -42,30 +29,14 @@ class Home extends Component {
       this.props.isGeolocationAvailable &&
       this.props.isGeolocationEnabled
     ) {
-      fetch(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${
-          this.props.coords.latitude
-        }&lon=${this.props.coords.longitude}&appid=${API}&units=metric`
-      )
-        .then(res => {
-          if (res.ok) {
-            return res;
-          } else {
-            alert(res.statusText);
-          }
-        })
-        .then(res => res.json())
-        .then(res => {
-          this.setState({
-            weather: res,
-            connect: true,
-            temp: res.main.temp,
-            description: res.weather[0].description,
-            icon: res.weather[0].id,
-            isLoading: false
-          });
-        })
-        .catch(err => console.log(err));
+      this.props.getWeather(
+        this.props.api,
+        this.props.coords.latitude,
+        this.props.coords.longitude
+      );
+      this.setState({
+        connect: true
+      });
     }
   }
 
@@ -77,22 +48,35 @@ class Home extends Component {
       value: e.target.value
     });
   };
+
   render() {
-    console.log(this.state.isLoading);
+    const formatter = new Intl.DateTimeFormat("pl", {
+      day: "numeric",
+      month: "long",
+      year: "numeric"
+    });
+
     return (
       <div className="home" style={{ backgroundImage: `url(${bg})` }}>
+        <p className="home__day">{formatter.format(new Date())}</p>
         {!this.props.isGeolocationAvailable ? (
           <div>Your browser does not support Geolocation</div>
         ) : !this.props.isGeolocationEnabled ? (
           <div>Geolocation is not enabled</div>
         ) : this.props.coords ? (
-          this.state.isLoading ? (
+          this.props.weather.isLoading ? (
             <Loader />
           ) : (
             <div className="home__info">
-              <h1>{this.state.weather.name}</h1>
-              <p>{this.state.temp}&#176;C</p>
-              <i className={`wi-owm-${this.state.icon}`} />
+              <h1>{this.props.weather.name}</h1>
+              <i className="fas fa-map-marker-alt" />
+              <p>{this.props.weather.main.temp}&#176;C</p>
+              <i
+                className={`wi-owm-${this.props.weather.weather[0].id} ${
+                  this.props.weather.weather[0].id === 800 ? "sunAnim" : null
+                }
+                `}
+              />
             </div>
           )
         ) : (
@@ -116,9 +100,29 @@ class Home extends Component {
     );
   }
 }
-export default geolocated({
-  positionOptions: {
-    enableHighAccuracy: false
-  },
-  userDecisionTimeout: 5000
-})(Home);
+
+function mapStateToProps(state) {
+  return {
+    api: state.api.api,
+    weather: state.weather
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    getApi: bindActionCreators(getApi, dispatch),
+    getWeather: bindActionCreators(getWeather, dispatch)
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(
+  geolocated({
+    positionOptions: {
+      enableHighAccuracy: false
+    },
+    userDecisionTimeout: 5000
+  })(Home)
+);

@@ -101,12 +101,28 @@
       transform: rotate(90deg);
     }
   }
-}
-@keyframes rotate {
-  0% {
-    transform: rotate(0);
+
+  &__day {
+    position: absolute;
+    left: 50%;
+    top: 12%;
+    transform: translate(-50%, -50%);
+    font-size: 1.6rem;
+    color: #ccc;
+    font-weight: 100;
   }
-  100% {
-    transform: rotate(360deg);
+  .fa-map-marker-alt::before {
+    font-family: "Font Awesome 5 Free";
+    font-size: 1.4rem;
+  }
+}
+
+.sunAnim {
+  animation: sunRotate 7s linear infinite;
+  // transform-origin: 50% 4px;
+  margin-top: 1.4rem;
+
+  &::before {
+    color: yellow;
   }
 }
