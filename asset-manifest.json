@@ -1,13 +1,20 @@
 {
-  "main.css": "/weather-app-react/static/css/main.294bcf3e.chunk.css",
-  "main.js": "/weather-app-react/static/js/main.0127d458.chunk.js",
-  "main.js.map": "/weather-app-react/static/js/main.0127d458.chunk.js.map",
+  "main.css": "/weather-app-react/static/css/main.b896c0d9.chunk.css",
+  "main.js": "/weather-app-react/static/js/main.7e87dd86.chunk.js",
+  "main.js.map": "/weather-app-react/static/js/main.7e87dd86.chunk.js.map",
   "runtime~main.js": "/weather-app-react/static/js/runtime~main.a31b442a.js",
   "runtime~main.js.map": "/weather-app-react/static/js/runtime~main.a31b442a.js.map",
-  "static/js/2.f213e47f.chunk.js": "/weather-app-react/static/js/2.f213e47f.chunk.js",
-  "static/js/2.f213e47f.chunk.js.map": "/weather-app-react/static/js/2.f213e47f.chunk.js.map",
+  "static/css/2.c49a6d9b.chunk.css": "/weather-app-react/static/css/2.c49a6d9b.chunk.css",
+  "static/js/2.0df062bb.chunk.js": "/weather-app-react/static/js/2.0df062bb.chunk.js",
+  "static/js/2.0df062bb.chunk.js.map": "/weather-app-react/static/js/2.0df062bb.chunk.js.map",
   "index.html": "/weather-app-react/index.html",
-  "precache-manifest.e97ac05528fa0282f2dac21a70e5b570.js": "/weather-app-react/precache-manifest.e97ac05528fa0282f2dac21a70e5b570.js",
+  "precache-manifest.62a75d5b09812d589ef0c87965eec930.js": "/weather-app-react/precache-manifest.62a75d5b09812d589ef0c87965eec930.js",
   "service-worker.js": "/weather-app-react/service-worker.js",
-  "static/css/main.294bcf3e.chunk.css.map": "/weather-app-react/static/css/main.294bcf3e.chunk.css.map"
+  "static/css/2.c49a6d9b.chunk.css.map": "/weather-app-react/static/css/2.c49a6d9b.chunk.css.map",
+  "static/css/main.b896c0d9.chunk.css.map": "/weather-app-react/static/css/main.b896c0d9.chunk.css.map",
+  "static/media/bg.png": "/weather-app-react/static/media/bg.2267d875.png",
+  "static/media/Search.scss": "/weather-app-react/static/media/bg2.92a854f8.png",
+  "static/media/icon.png": "/weather-app-react/static/media/icon.8a98fd80.png",
+  "static/media/Notify.scss": "/weather-app-react/static/media/man.99612b6e.jpg",
+  "static/media/weather-icons.min.css": "/weather-app-react/static/media/weathericons-regular-webfont.ecaf8b48.svg"
 }
