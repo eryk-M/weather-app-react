@@ -6,12 +6,10 @@ import TopInfo from "../TopInfo/TopInfo";
 import Menu from "../Menu/Menu";
 import Home from "../../Pages/Home/Home";
 import Search from "../../Pages/Search/Search";
-// GET http://api.openweathermap.org/data/2.5/forecast?q=London,us&APPID=b10af6aec43fd80647fc64535ed23b01
-
 class App extends Component {
   state = {
-    search: true,
-    home: false
+    search: false,
+    home: true
   };
   handleSearch = () => {
     this.setState({
@@ -32,7 +30,11 @@ class App extends Component {
         <TopInfo />
         {this.state.search ? <Search /> : null}
         {this.state.home ? <Home search={this.handleSearch} /> : null}
-        <Menu home={this.handleHome} search={this.handleSearch} />
+        <Menu
+          home={this.handleHome}
+          search={this.handleSearch}
+          width={this.state}
+        />
       </div>
     );
   }

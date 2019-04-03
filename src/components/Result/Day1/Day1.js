@@ -1,12 +1,18 @@
 import React, { Component } from "react";
-import $ from "jquery";
+import { SlideDown } from "react-slidedown";
+import "react-slidedown/lib/slidedown.css";
 import CanvasJSReact from "../../../assets/canvasjs.react";
 const CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 class Day1 extends Component {
+  state = {
+    open: true
+  };
   handleSlide = e => {
-    $(".result__today").slideToggle("slow");
-    $(e.target).toggleClass("rotate");
+    this.setState({
+      open: !this.state.open
+    });
+    e.target.classList.toggle("rotate");
   };
 
   render() {
@@ -31,7 +37,7 @@ class Day1 extends Component {
         suffix: ":00",
         interval: 24 / this.props.weather.length
       },
-      width: 214,
+      width: 205,
       height: 140,
       data: [
         {
@@ -109,41 +115,45 @@ class Day1 extends Component {
                 />
               </div>
             </div>
-            <div className="result__main-item-info result__today">
-              <div className="result__main-weather">
-                <p>
-                  <i className="fas fa-thermometer-half" /> Temperature:{" "}
-                  {this.props.weather[0].main.temp.toFixed()}&#176;C{" "}
-                </p>
-                <p>
-                  <i className="fas fa-thermometer-empty" /> Min temp:{" "}
-                  {Math.min(...tempMin)}&#176;C{" "}
-                </p>
-                <p>
-                  <i className="fas fa-thermometer-full" /> Max temp:{" "}
-                  {Math.max(...tempMax)}&#176;C{" "}
-                </p>
-                <p>
-                  <i className="fas fa-wind" /> Wind speed:{" "}
-                  {this.props.weather[0].wind.speed.toFixed()} km/h
-                </p>
-                <p>
-                  <i className="fas fa-tint" /> Humidity:{" "}
-                  {this.props.weather[0].main.humidity.toFixed()}%
-                </p>
-                <p>
-                  <i className="fas fa-compress" /> Pressure:{" "}
-                  {this.props.weather[0].main.pressure.toFixed()} hPa
-                </p>
-                <p>
-                  <i className="fas fa-cloud" />
-                  Cloudiness: {this.props.weather[0].clouds.all}%
-                </p>
-              </div>
-              <div className="result__main-canvas">
-                <CanvasJSChart options={options} />
-              </div>
-            </div>
+            <SlideDown className={"my-dropdown-slidedown"}>
+              {this.state.open ? (
+                <div className="result__main-item-info result__today">
+                  <div className="result__main-weather">
+                    <p>
+                      <i className="fas fa-thermometer-half" /> Temperature:{" "}
+                      {this.props.weather[0].main.temp.toFixed()}&#176;C{" "}
+                    </p>
+                    <p>
+                      <i className="fas fa-thermometer-empty" /> Min temp:{" "}
+                      {Math.min(...tempMin)}&#176;C{" "}
+                    </p>
+                    <p>
+                      <i className="fas fa-thermometer-full" /> Max temp:{" "}
+                      {Math.max(...tempMax)}&#176;C{" "}
+                    </p>
+                    <p>
+                      <i className="fas fa-wind" /> Wind speed:{" "}
+                      {this.props.weather[0].wind.speed.toFixed()} km/h
+                    </p>
+                    <p>
+                      <i className="fas fa-tint" /> Humidity:{" "}
+                      {this.props.weather[0].main.humidity.toFixed()}%
+                    </p>
+                    <p>
+                      <i className="fas fa-compress" /> Pressure:{" "}
+                      {this.props.weather[0].main.pressure.toFixed()} hPa
+                    </p>
+                    <p>
+                      <i className="fas fa-cloud" />
+                      Cloudiness: {this.props.weather[0].clouds.all}%
+                    </p>
+                  </div>
+                  <div className="result__main-canvas">
+                    <CanvasJSChart options={options} />
+                  </div>
+                </div>
+              ) : null}
+            </SlideDown>
           </>
         ) : null}
       </>

@@ -3,7 +3,10 @@ import "./TopInfo.scss";
 
 const TopInfo = () => {
   const timeh = new Date().getHours();
-  const timem = new Date().getMinutes();
+  let timem = new Date().getMinutes();
+  if (timem < 10) {
+    timem = "0" + timem;
+  }
   return (
     <div className="top__info">
       <div className="top__info-left">

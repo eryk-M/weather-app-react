@@ -20,7 +20,6 @@ const Result = props => {
     );
   }
   const tempMin = filteredDays[0].map(min => +min.main.temp_min.toFixed());
-  console.log(props.weather.forecast);
   return (
     <div className="result">
       {props.weather.forecast.isLoading ? (
@@ -50,7 +49,7 @@ const Result = props => {
             <p className="result__day1-min">
               {Math.min(...tempMin) === Infinity
                 ? "...open weather have to refresh api"
-                : Math.min(...tempMin) + "&#176;C"}
+                : Math.min(...tempMin) + "°C"}
             </p>
           </div>
 

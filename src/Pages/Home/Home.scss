@@ -115,6 +115,15 @@
     font-family: "Font Awesome 5 Free";
     font-size: 1.4rem;
   }
+  &__geolocation {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.6rem;
+    color: #ccc;
+    font-weight: 100;
+  }
 }
 
 .sunAnim {

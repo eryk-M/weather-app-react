@@ -1,11 +1,16 @@
 import React, { Component } from "react";
-import $ from "jquery";
+import { SlideDown } from "react-slidedown";
 import CanvasJSReact from "../../../assets/canvasjs.react";
 const CanvasJSChart = CanvasJSReact.CanvasJSChart;
 class Day2 extends Component {
+  state = {
+    open: false
+  };
   handleSlide = e => {
-    $(".result__tomorrow").slideToggle("slow");
-    $(e.target).toggleClass("rotate");
+    this.setState({
+      open: !this.state.open
+    });
+    e.target.classList.toggle("rotate");
   };
 
   render() {
@@ -96,7 +101,6 @@ class Day2 extends Component {
       ]
     };
     console.log(temps);
-    // console.log(this.props.weather2[0].dt_txt.substr(11, 2) * 1);
     return (
       <>
         <div className="result__main-item">
@@ -110,37 +114,41 @@ class Day2 extends Component {
             <i onClick={this.handleSlide} className="fas fa-chevron-down" />
           </div>
         </div>
-        <div className="result__main-item-info result__tomorrow">
-          <div className="result__main-weather">
-            <p>
-              <i className="fas fa-thermometer-empty" /> Min temp:{" "}
-              {Math.min(...tempMin)}&#176;C{" "}
-            </p>
-            <p>
-              <i className="fas fa-thermometer-full" /> Max temp:{" "}
-              {Math.max(...tempMax)}&#176;C{" "}
-            </p>
-            <p>
-              <i className="fas fa-wind" /> Wind speed:{" "}
-              {this.props.weather2[0].wind.speed.toFixed()} km/h
-            </p>
-            <p>
-              <i className="fas fa-tint" /> Humidity:{" "}
-              {this.props.weather2[0].main.humidity.toFixed()}%
-            </p>
-            <p>
-              <i className="fas fa-compress" /> Pressure:{" "}
-              {this.props.weather2[0].main.pressure.toFixed()} hPa
-            </p>
-            <p>
-              <i className="fas fa-cloud" />
-              Cloudiness: {this.props.weather2[0].clouds.all}%
-            </p>
-          </div>
-          <div className="result__main-canvas">
-            <CanvasJSChart options={options} />
-          </div>
-        </div>
+        <SlideDown className={"my-dropdown-slidedown"}>
+          {this.state.open ? (
+            <div className="result__main-item-info">
+              <div className="result__main-weather">
+                <p>
+                  <i className="fas fa-thermometer-empty" /> Min temp:{" "}
+                  {Math.min(...tempMin)}&#176;C{" "}
+                </p>
+                <p>
+                  <i className="fas fa-thermometer-full" /> Max temp:{" "}
+                  {Math.max(...tempMax)}&#176;C{" "}
+                </p>
+                <p className="fa-wind-para">
+                  <i className="fas fa-wind" /> Wind speed:{" "}
+                  {this.props.weather2[0].wind.speed.toFixed()} km/h
+                </p>
+                <p>
+                  <i className="fas fa-tint" /> Humidity:{" "}
+                  {this.props.weather2[0].main.humidity.toFixed()}%
+                </p>
+                <p>
+                  <i className="fas fa-compress" /> Pressure:{" "}
+                  {this.props.weather2[0].main.pressure.toFixed()} hPa
+                </p>
+                <p>
+                  <i className="fas fa-cloud" />
+                  Cloudiness: {this.props.weather2[0].clouds.all}%
+                </p>
+              </div>
+              <div className="result__main-canvas">
+                <CanvasJSChart options={options} />
+              </div>
+            </div>
+          ) : null}
+        </SlideDown>
       </>
     );
   }

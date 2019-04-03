@@ -1,31 +1,41 @@
 import React, { Component } from "react";
 import "./Menu.scss";
-import $ from "jquery";
-
+import Notify from "../Notify/Notify";
 class Menu extends Component {
-  state = {};
-  handleBack = () => {
-    // console.log(this.props);
-    // this.history.goBack();
+  state = {
+    notify: false,
+    messages: 1
   };
-
-  handleNotify = () => {};
+  handleNotify = () => {
+    this.setState({
+      notify: !this.state.notify,
+      messages: 0
+    });
+  };
   render() {
     return (
-      <div className="menu">
-        <button onClick={this.props.home}>
-          <i className="fas fa-home" />
-        </button>
-        <button onClick={this.props.search}>
-          <i className="fas fa-search" />
-        </button>
-        <button onClick={this.handleNotify}>
-          <i className="fas fa-bell" />
-        </button>
-        <button onClick={this.handleBack}>
-          <i className="fas fa-undo" />
-        </button>
-      </div>
+      <>
+        <div className="menu">
+          <button className="menu__btn" onClick={this.props.home}>
+            <i className="fas fa-home" />
+          </button>
+          <button className="menu__btn" onClick={this.props.search}>
+            <i className="fas fa-search" />
+          </button>
+          <button className="menu__btn" onClick={this.handleNotify}>
+            <i
+              className="fas fa-bell"
+              style={this.state.messages ? null : { animation: "none" }}
+            />
+          </button>
+          {this.state.messages ? (
+            <div className="menu__notification">
+              <span>{this.state.messages}</span>
+            </div>
+          ) : null}
+        </div>
+        <Notify show={this.state.notify} searchWidth={this.props.width} />
+      </>
     );
   }
 }

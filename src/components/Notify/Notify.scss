@@ -1,0 +1,127 @@
+.notify {
+  width: 100%;
+  height: 21rem;
+  background-color: #eee;
+  position: fixed;
+  top: 66%;
+  z-index: 1;
+  left: 0;
+  transition: 0.4s transform, 0.4s height;
+  &__item {
+    padding: 1rem;
+    border-bottom: 0.5px solid rgba(0, 0, 0, 0.5);
+    min-height: 8rem;
+    &--photo {
+      background: url("../../assets/images/man.jpg");
+      height: 6rem;
+      width: 6rem;
+      border-radius: 50%;
+      margin-right: 1rem;
+      background-position: bottom;
+      background-size: cover;
+      float: left;
+    }
+    &--message {
+      color: #000;
+      font-size: 1.4rem;
+    }
+
+    &--question {
+      background-color: lightblue;
+      font-size: 1.3rem;
+      width: 45%;
+      padding: 1rem;
+      border-radius: 10px;
+      margin-left: auto;
+      margin: 1rem auto 0 0.5rem;
+    }
+  }
+
+  &__input {
+    width: 95%;
+    margin-left: 0.5rem;
+    position: absolute;
+    top: 75%;
+    left: 0;
+    height: 5rem;
+    padding: 0.5rem;
+  }
+
+  &__answer {
+    background-color: lightgreen;
+    font-size: 1.3rem;
+    width: 45%;
+    padding: 1rem;
+    min-height: 3rem;
+    border-radius: 10px;
+    margin-left: auto;
+    margin: 1rem 0.5rem 0 auto;
+    transition: 0.5s all;
+    &-message {
+      display: block;
+      width: 25rem;
+      text-align: left;
+    }
+  }
+  &__btn-answer {
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+    border-radius: 5px;
+    background-color: var(--color-primary);
+    color: #ccc;
+    border: none;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  &__send {
+    position: absolute;
+    right: 0;
+    top: 75%;
+    padding: 1.75rem 0.5rem;
+    background-color: var(--color-primary);
+    border: none;
+    color: #ccc;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  &__name {
+    font-size: 2.5rem;
+    line-height: 6rem;
+    text-align: center;
+    padding-right: 6rem;
+  }
+  &__arrow {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 25px;
+    & i {
+      font-size: 4rem;
+      color: #ccc;
+      position: relative;
+      z-index: 0;
+      &:after {
+        content: "";
+        position: absolute;
+        background-color: black;
+        width: 3rem;
+        height: 2.5rem;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: -1;
+      }
+    }
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.answer {
+  transform: translateY(-50%) !important;
+  height: 45rem;
+}

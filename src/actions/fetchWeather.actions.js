@@ -1,6 +1,6 @@
-export const FETCH_WEATHER_BEGIN = "FETCH_UPCOMING_BEGIN";
-export const FETCH_WEATHER_SUCCESS = "FETCH_UPCOMING_SUCCESS";
-export const FETCH_WEATHER_FAIL = "FETCH_UPCOMING_FAIL";
+export const FETCH_WEATHER_BEGIN = "FETCH_WEATHER_BEGIN";
+export const FETCH_WEATHER_SUCCESS = "FETCH_WEATHER_SUCCESS";
+export const FETCH_WEATHER_FAIL = "FETCH_WEATHER_FAIL";
 
 export const getWeather = (api, lat, long) => {
   return dispatch => {

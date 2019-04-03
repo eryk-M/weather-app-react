@@ -100,23 +100,74 @@
       &-info {
         background-color: #ccc;
         color: black;
-        display: none;
+        // display: none;
         font-size: 1.6rem;
         padding: 0.5rem 0;
         & i {
           vertical-align: middle;
           margin: 0 1rem;
           font-family: "Font Awesome 5 Free";
-          color: rgba(0, 0, 0, 0.5);
+          opacity: 0.5;
         }
       }
     }
   }
   &__today {
     display: block;
+    height: 17rem;
   }
 }
 
 .rotate {
   transform: rotate(180deg);
+}
+
+.fa-thermometer-half {
+  color: goldenrod;
+}
+.fa-thermometer-empty {
+  color: aqua;
+}
+
+.fa-thermometer-full {
+  color: crimson;
+}
+
+.fa-wind {
+  color: blue;
+}
+
+.fa-tint {
+  color: darkblue;
+}
+
+.fa-compress {
+  color: red;
+}
+
+.fa-cloud {
+  color: grey;
+}
+
+.rain {
+  // height: 100%;
+  background-image: url("../../assets/images/rain.png");
+  animation: rain 0.3s linear infinite;
+  // width: 100%;
+  // z-index: 100;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 0;
+}
+
+@keyframes rain {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 40% 100%;
+  }
 }

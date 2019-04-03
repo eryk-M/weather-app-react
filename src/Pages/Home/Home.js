@@ -13,36 +13,41 @@ class Home extends Component {
   state = {
     connect: false,
     latitude: 0,
-    longitude: 0
+    longitude: 0,
+    value: ""
   };
 
   componentDidUpdate() {
-    if (this.state.latitude !== this.props.coords.latitude) {
+    if (
+      this.props.isGeolocationEnabled &&
+      this.state.latitude !== this.props.coords.latitude
+    ) {
       this.setState({
         latitude: this.props.coords.latitude,
         longitude: this.props.coords.longitude
       });
-    }
-    if (
-      this.state.connect === false &&
-      this.props.coords.latitute !== this.state.latitude &&
-      this.props.isGeolocationAvailable &&
-      this.props.isGeolocationEnabled
-    ) {
-      this.props.getWeather(
-        this.props.api,
-        this.props.coords.latitude,
-        this.props.coords.longitude
-      );
-      this.setState({
-        connect: true
-      });
+      if (
+        this.state.connect === false &&
+        this.props.coords.latitute !== this.state.latitude &&
+        this.props.isGeolocationAvailable &&
+        this.props.isGeolocationEnabled
+      ) {
+        this.props.getWeather(
+          this.props.api,
+          this.props.coords.latitude,
+          this.props.coords.longitude
+        );
+        this.setState({
+          connect: true
+        });
+      }
     }
   }
-
-  handleSubmit = e => {
+  handleFormSubmit = e => {
     e.preventDefault();
+    console.log(this.props);
   };
+
   handleInputChange = e => {
     this.setState({
       value: e.target.value
@@ -50,7 +55,7 @@ class Home extends Component {
   };
 
   render() {
-    const formatter = new Intl.DateTimeFormat("pl", {
+    const formatter = new Intl.DateTimeFormat("en", {
       day: "numeric",
       month: "long",
       year: "numeric"
@@ -62,7 +67,7 @@ class Home extends Component {
         {!this.props.isGeolocationAvailable ? (
           <div>Your browser does not support Geolocation</div>
         ) : !this.props.isGeolocationEnabled ? (
-          <div>Geolocation is not enabled</div>
+          <div class="home__geolocation">Geolocation is not enabled</div>
         ) : this.props.coords ? (
           this.props.weather.isLoading ? (
             <Loader />
@@ -70,7 +75,7 @@ class Home extends Component {
             <div className="home__info">
               <h1>{this.props.weather.name}</h1>
               <i className="fas fa-map-marker-alt" />
-              <p>{this.props.weather.main.temp}&#176;C</p>
+              <p>{this.props.weather.main.temp.toFixed()}&#176;C</p>
               <i
                 className={`wi-owm-${this.props.weather.weather[0].id} ${
                   this.props.weather.weather[0].id === 800 ? "sunAnim" : null
@@ -83,7 +88,7 @@ class Home extends Component {
           <div>Getting the location data&hellip; </div>
         )}
 
-        <form onSubmit={this.handleSubmit} className="home__form">
+        <form onSubmit={this.handleFormSubmit} className="home__form">
           <input
             type="text"
             value={this.state.value}
@@ -104,7 +109,8 @@ class Home extends Component {
 function mapStateToProps(state) {
   return {
     api: state.api.api,
-    weather: state.weather
+    weather: state.weather,
+    value: state.value
   };
 }
 

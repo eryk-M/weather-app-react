@@ -15,6 +15,7 @@
     "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8",
     "react-scrollbar-js": "^1.0.1",
+    "react-slidedown": "^2.0.9",
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0"

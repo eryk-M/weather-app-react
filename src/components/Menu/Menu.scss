@@ -4,17 +4,18 @@
   left: 0;
   background-color: var(--color-primary);
   width: 100%;
-  height: 5rem;
+  height: 6rem;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   display: flex;
   justify-content: space-around;
   align-items: center;
+  z-index: 15;
   a,
   button {
     background: transparent;
     border: none;
-
+    margin-bottom: 1rem;
     & i {
       font-size: 2.8rem;
       color: #ccc;
@@ -29,5 +30,25 @@
   & .fa-bell {
     animation: ring 4s 0.7s ease-in-out infinite;
     transform-origin: 50% 4px;
+  }
+
+  &__notification {
+    position: absolute;
+    font-size: 1.6rem;
+    right: 8%;
+    top: 5%;
+    color: #ccc;
+    background-color: red;
+    border-radius: 25px;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__btn:focus {
+    border: none;
+    outline: none;
   }
 }

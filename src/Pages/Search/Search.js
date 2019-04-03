@@ -23,20 +23,12 @@ class Search extends Component {
       value: ""
     });
   };
-  componentDidMount() {}
-
   handleInputChange = e => {
     this.setState({
       value: e.target.value
     });
   };
   render() {
-    // const date = new Date().toISOString();
-    // const dateFixed = date.substr(0, 10);
-    // const filteredDates = this.props.forecast.list.filter(
-    //   filter => filter.dt_txt.substr(0, 10) === dateFixed
-    // );
-    // console.log(filteredDates);
     console.log(this.props);
     return (
       <div className="search">
