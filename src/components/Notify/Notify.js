@@ -53,8 +53,7 @@ class Notify extends Component {
   };
   render() {
     const style = {
-      transform: this.props.show ? "translateY(0)" : "translateY(100%)",
-      width: this.props.searchWidth.search ? "96%" : "100%"
+      transform: this.props.show ? "translateY(0)" : "translateY(100%)"
     };
 
     const input = {

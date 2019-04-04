@@ -59,8 +59,8 @@
     transition: 0.5s all;
     &-message {
       display: block;
-      width: 25rem;
       text-align: left;
+      word-wrap: break-word;
     }
   }
   &__btn-answer {

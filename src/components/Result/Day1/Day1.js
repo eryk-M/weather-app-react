@@ -35,9 +35,9 @@ class Day1 extends Component {
       axisX: {
         title: "Hours",
         suffix: ":00",
-        interval: 24 / this.props.weather.length
+        interval: 3
       },
-      width: 205,
+      width: 224,
       height: 140,
       data: [
         {
@@ -133,7 +133,7 @@ class Day1 extends Component {
                     </p>
                     <p>
                       <i className="fas fa-wind" /> Wind speed:{" "}
-                      {this.props.weather[0].wind.speed.toFixed()} km/h
+                      {this.props.weather[0].wind.speed.toFixed()} m/s
                     </p>
                     <p>
                       <i className="fas fa-tint" /> Humidity:{" "}

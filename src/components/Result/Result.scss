@@ -144,30 +144,18 @@
 .fa-compress {
   color: red;
 }
-
 .fa-cloud {
   color: grey;
 }
-
-.rain {
-  // height: 100%;
-  background-image: url("../../assets/images/rain.png");
-  animation: rain 0.3s linear infinite;
-  // width: 100%;
-  // z-index: 100;
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  z-index: 0;
+::-webkit-scrollbar {
+  width: 10px;
 }
-
-@keyframes rain {
-  0% {
-    background-position: 0% 0%;
-  }
-  100% {
-    background-position: 40% 100%;
-  }
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }

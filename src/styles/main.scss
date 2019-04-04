@@ -9,6 +9,25 @@
 
 html {
   font-size: 62.5%;
+  @media only screen and (max-width: 412px) {
+    font-size: 62%;
+  }
+  @media only screen and (max-width: 376px) and (max-height: 668px) {
+    font-size: 56.61%;
+  }
+  @media only screen and (max-width: 376px) {
+    font-size: 55%;
+  }
+  @media only screen and (max-width: 361px) {
+    font-size: 54.34%;
+  }
+  @media only screen and (max-width: 321px) {
+    font-size: 45.3%;
+  }
+
+  // @media only screen and (max-width: 376px) and (max-height: 813px) {
+  //   font-size: 68.95%;
+  // }
 }
 
 body {

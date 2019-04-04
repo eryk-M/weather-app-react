@@ -125,7 +125,7 @@ class Day3 extends Component {
                 </p>
                 <p>
                   <i className="fas fa-wind" /> Wind speed:{" "}
-                  {this.props.weather3[0].wind.speed.toFixed()} km/h
+                  {this.props.weather3[0].wind.speed.toFixed()} m/s
                 </p>
                 <p>
                   <i className="fas fa-tint" /> Humidity:{" "}
