@@ -9,9 +9,11 @@ import Search from "../../Pages/Search/Search";
 class App extends Component {
   state = {
     search: false,
-    home: true
+    home: true,
+    value: ""
   };
-  handleSearch = () => {
+  handleSearch = e => {
+    e.preventDefault();
     this.setState({
       search: true,
       home: false
@@ -24,12 +26,23 @@ class App extends Component {
       home: true
     });
   };
+  handleChange = e => {
+    this.setState({
+      value: e.target.value
+    });
+  };
   render() {
     return (
       <div className="App">
         <TopInfo />
-        {this.state.search ? <Search /> : null}
-        {this.state.home ? <Home search={this.handleSearch} /> : null}
+        {this.state.search ? <Search value={this.state.value} /> : null}
+        {this.state.home ? (
+          <Home
+            search={this.handleSearch}
+            value={this.state.value}
+            change={this.handleChange}
+          />
+        ) : null}
         <Menu
           home={this.handleHome}
           search={this.handleSearch}

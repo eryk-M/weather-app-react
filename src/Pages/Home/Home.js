@@ -45,7 +45,7 @@ class Home extends Component {
   }
   handleFormSubmit = e => {
     e.preventDefault();
-    console.log(this.props);
+    this.setState({});
   };
 
   handleInputChange = e => {
@@ -60,14 +60,13 @@ class Home extends Component {
       month: "long",
       year: "numeric"
     });
-
     return (
       <div className="home" style={{ backgroundImage: `url(${bg})` }}>
         <p className="home__day">{formatter.format(new Date())}</p>
         {!this.props.isGeolocationAvailable ? (
           <div>Your browser does not support Geolocation</div>
         ) : !this.props.isGeolocationEnabled ? (
-          <div class="home__geolocation">Geolocation is not enabled</div>
+          <div className="home__geolocation">Geolocation is not enabled</div>
         ) : this.props.coords ? (
           this.props.weather.isLoading ? (
             <Loader />
@@ -85,15 +84,17 @@ class Home extends Component {
             </div>
           )
         ) : (
-          <div>Getting the location data&hellip; </div>
+          <div className="home__geolocation">
+            Getting the location data&hellip;{" "}
+          </div>
         )}
 
-        <form onSubmit={this.handleFormSubmit} className="home__form">
+        <form onSubmit={this.props.search} className="home__form">
           <input
             type="text"
-            value={this.state.value}
+            value={this.props.value}
             placeholder="Search weather..."
-            onChange={this.handleInputChange}
+            onChange={this.props.change}
           />
           <i className="fas fa-search" />
         </form>

@@ -16,8 +16,15 @@ class Search extends Component {
     latitude: 0,
     longitude: 0
   };
+
+  componentDidMount() {
+    if (this.props.value) {
+      this.props.getForecast(this.props.api, this.props.value);
+    }
+  }
   handleSubmit = e => {
     e.preventDefault();
+    this.refs.input.blur();
     this.props.getForecast(this.props.api, this.state.value);
     this.setState({
       value: ""
@@ -29,11 +36,11 @@ class Search extends Component {
     });
   };
   render() {
-    console.log(this.props);
     return (
       <div className="search">
         <form onSubmit={this.handleSubmit} className="home__form search__form">
           <input
+            ref="input"
             type="text"
             value={this.state.value}
             placeholder="Search weather..."

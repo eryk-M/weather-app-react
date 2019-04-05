@@ -19,6 +19,7 @@ const Result = props => {
       filter => filter.dt_txt.substr(0, 10) === dayISO
     );
   }
+
   const tempMin = filteredDays[0].map(min => +min.main.temp_min.toFixed());
   return (
     <div className="result">

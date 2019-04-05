@@ -16,10 +16,12 @@ class Day1 extends Component {
   };
 
   render() {
+    const width = window.innerWidth;
     const tempMin = this.props.weather.map(min => +min.main.temp_min.toFixed());
     const tempMax = this.props.weather.map(max => +max.main.temp_max.toFixed());
 
     const temps = this.props.weather.map(temp => +temp.main.temp.toFixed());
+
     const options = {
       animationEnabled: true,
       exportEnabled: true,
@@ -35,9 +37,11 @@ class Day1 extends Component {
       axisX: {
         title: "Hours",
         suffix: ":00",
-        interval: 3
+        interval: 3,
+        minimum: 0,
+        maximum: 21
       },
-      width: 224,
+      width: width,
       height: 140,
       data: [
         {
@@ -96,6 +100,14 @@ class Day1 extends Component {
         }
       ]
     };
+    if (width < 376 && width > 321) {
+      options.width = 190;
+    } else if (width < 321) {
+      options.width = 155;
+      options.height = 110;
+    } else if (width > 410) {
+      options.width = 220;
+    }
     return (
       <>
         {this.props.weather[0] ? (

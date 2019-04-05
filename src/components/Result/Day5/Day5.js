@@ -15,6 +15,7 @@ class Day5 extends Component {
   };
 
   render() {
+    const width = window.innerWidth;
     const tempMin = this.props.weather5.map(
       min => +min.main.temp_min.toFixed()
     );
@@ -100,6 +101,14 @@ class Day5 extends Component {
         }
       ]
     };
+    if (width < 376 && width > 321) {
+      options.width = 190;
+    } else if (width < 321) {
+      options.width = 155;
+      options.height = 110;
+    } else if (width > 410) {
+      options.width = 220;
+    }
     return (
       <>
         <div className="result__main-item">
