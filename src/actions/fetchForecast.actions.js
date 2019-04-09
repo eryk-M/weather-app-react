@@ -12,7 +12,6 @@ export const getForecast = (api, query, lat, long) => {
         if (res.ok) {
           return res;
         } else {
-          alert(res.statusText);
           dispatch({
             type: FETCH_FORECAST_FAIL,
             payload: res.statusText

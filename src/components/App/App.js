@@ -12,6 +12,7 @@ class App extends Component {
     home: true,
     value: ""
   };
+
   handleSearch = e => {
     e.preventDefault();
     this.setState({

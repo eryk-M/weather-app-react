@@ -8,17 +8,24 @@ let initialState = {
   isLoading: false,
   city: [],
   list: [],
-  search: false
+  search: false,
+  error: false
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case FETCH_FORECAST_BEGIN:
-      return { ...state, isLoading: true, search: false };
+      return { ...state, isLoading: true, search: false, error: false };
     case FETCH_FORECAST_SUCCESS:
-      return { ...state, ...action.payload, isLoading: false, search: true };
+      return {
+        ...state,
+        ...action.payload,
+        isLoading: false,
+        search: true,
+        error: false
+      };
     case FETCH_FORECAST_FAIL:
-      return { ...state, isLoading: true, search: false };
+      return { ...state, isLoading: false, search: false, error: true };
     default:
       return state;
   }
